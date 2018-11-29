@@ -28,6 +28,8 @@ public class AStar : MonoBehaviour {
 
         openSet.Add(startNode);
 
+        grid.Reset();
+
         while (openSet.Count > 0)
         {
             Node currentNode = openSet[0];
@@ -64,6 +66,7 @@ public class AStar : MonoBehaviour {
                     neighbour.parent = currentNode;
 
                     if(!openSet.Contains(neighbour)) {
+                        neighbour.hasBeenChecked = true;
                         openSet.Add(neighbour);
                     }
                 }

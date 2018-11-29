@@ -13,6 +13,7 @@ public class Node {
     public int hCost;
     public Node parent;
 
+    public bool hasBeenChecked;
 
     public Node(bool isWalkable, Vector3 nodePosition, int gridX, int gridY)
     {

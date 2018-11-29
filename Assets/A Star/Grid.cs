@@ -81,6 +81,18 @@ public class Grid : MonoBehaviour {
         return grid[x, y];
     }
 
+    public void Reset()
+    {
+        // Create the actual grid of nodes
+        for (int i = 0; i < gridSizeX; i++)      // Rows
+        {
+            for (int j = 0; j < gridSizeY; j++)  // Columns
+            {
+                grid[i, j].hasBeenChecked = false;
+            }
+        }
+    }
+
     public List<Node> path;
     void OnDrawGizmos()
     {
@@ -91,7 +103,9 @@ public class Grid : MonoBehaviour {
             foreach(Node n in grid)
             {
                 Gizmos.color = (n.isWalkable) ? Color.white : Color.red;
-                if(path != null)
+
+                if (n.hasBeenChecked) { Gizmos.color = Color.gray; }
+                if (path != null)
                 {
                     if(path.Contains(n))
                     {
